@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "mvpv1",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/kwong/Bloom/mvpv1/amplify/backend/api/mvpv1/schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2022-12-28T03:14:50.765Z",
+      "keyDescription": "mvpv1 api key"
+    }
+  }
+}
