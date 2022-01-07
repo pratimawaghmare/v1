@@ -13,14 +13,15 @@ export const getTodo = /* GraphQL */ `
   }
 `;
 export const listTodos = /* GraphQL */ `
-  query ListTodos(
+  query ListTodos($userID: userID!)(
     $filter: ModelTodoFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listTodos(filter: $filter, limit: $limit, nextToken: $nextToken, cognitoID: $userID) {
       items {
         id
+        cognitoID
         name
         description
         createdAt

@@ -8,6 +8,7 @@ export const createTodo = /* GraphQL */ `
   ) {
     createTodo(input: $input, condition: $condition) {
       id
+      cognitoID
       name
       description
       createdAt

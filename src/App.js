@@ -9,7 +9,7 @@ import AuthClass from '@aws-amplify/ui-react'
 import { ConsoleLogger } from '@aws-amplify/core';
 Amplify.configure(awsExports);
 
-const initialState = { name: '', description: ''}
+const initialState = { name: '', description: '', cognitoID: getUserID()}
 
 const App = () => {
   const [formState, setFormState] = useState(initialState)
@@ -25,7 +25,7 @@ const App = () => {
 
   async function fetchTodos() {
     try {
-      const todoData = await API.graphql(graphqlOperation(listTodos))
+      const todoData = await API.graphql(graphqlOperation(listTodos, {userID: getUserID()}))
       console.log("Getting todos")
       console.log(todoData)
       const todos = todoData.data.listTodos.items
