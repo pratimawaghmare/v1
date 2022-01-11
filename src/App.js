@@ -9,13 +9,14 @@ import AuthClass from '@aws-amplify/ui-react'
 import { ConsoleLogger } from '@aws-amplify/core';
 Amplify.configure(awsExports);
 
-const initialState = { name: '', description: '', cognitoID: getUserID()}
+const initialState = { name: '', description: '', cognitoID: ''}
 
 const App = () => {
   const [formState, setFormState] = useState(initialState)
   const [todos, setTodos] = useState([])
 
   useEffect(() => {
+    setFormState({cognitoID: getUserID()})
     fetchTodos()
   }, [])
 

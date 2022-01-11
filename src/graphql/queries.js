@@ -13,7 +13,7 @@ export const getTodo = /* GraphQL */ `
   }
 `;
 export const listTodos = /* GraphQL */ `
-  query ListTodos($userID: userID!)(
+  query ListTodos(
     $filter: ModelTodoFilterInput
     $limit: Int
     $nextToken: String
