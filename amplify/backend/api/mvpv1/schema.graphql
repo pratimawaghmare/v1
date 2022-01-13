@@ -7,6 +7,4 @@ type Todo @model {
   name: String!
   description: String!
   cognitoID: String!
-  CreatedAt: AWSDateTime!
-	updatedAt: AWSDateTime!
 }

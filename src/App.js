@@ -26,7 +26,7 @@ const App = () => {
 
   async function fetchTodos() {
     try {
-      const todoData = await API.graphql(graphqlOperation(listTodos, {userID: getUserID()}))
+      const todoData = await API.graphql(graphqlOperation(listTodos))
       console.log("Getting todos")
       console.log(todoData)
       const todos = todoData.data.listTodos.items

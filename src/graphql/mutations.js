@@ -8,9 +8,9 @@ export const createTodo = /* GraphQL */ `
   ) {
     createTodo(input: $input, condition: $condition) {
       id
-      cognitoID
       name
       description
+      cognitoID
       createdAt
       updatedAt
     }
@@ -25,6 +25,7 @@ export const updateTodo = /* GraphQL */ `
       id
       name
       description
+      cognitoID
       createdAt
       updatedAt
     }
@@ -39,6 +40,7 @@ export const deleteTodo = /* GraphQL */ `
       id
       name
       description
+      cognitoID
       createdAt
       updatedAt
     }

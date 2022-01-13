@@ -7,6 +7,7 @@ export const getTodo = /* GraphQL */ `
       id
       name
       description
+      cognitoID
       createdAt
       updatedAt
     }
@@ -18,12 +19,12 @@ export const listTodos = /* GraphQL */ `
     $limit: Int
     $nextToken: String
   ) {
-    listTodos(filter: $filter, limit: $limit, nextToken: $nextToken, cognitoID: $userID) {
+    listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        cognitoID
         name
         description
+        cognitoID
         createdAt
         updatedAt
       }
