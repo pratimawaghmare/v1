@@ -1,6 +1,7 @@
 /* src/App.js */
 import React, { useEffect, useState } from 'react'
 import Amplify, { API, graphqlOperation } from 'aws-amplify'
+import axios from 'axios'
 import { createTodo } from './graphql/mutations'
 import { listTodos } from './graphql/queries'
 import awsExports from "./aws-exports";
@@ -10,19 +11,47 @@ import { ConsoleLogger } from '@aws-amplify/core';
 Amplify.configure(awsExports);
 
 const initialState = { name: '', description: '', cognitoID: ''}
-
-const App = () => {
+const baseURL = "https://49fb-108-54-179-218.ngrok.io";
+const App = () => { 
   const [formState, setFormState] = useState(initialState)
   const [todos, setTodos] = useState([])
+  const [widgetURL, setWidgetURL] = useState("")
 
   useEffect(() => {
-    setFormState({cognitoID: getUserID()})
+    setFormState({cognitoID: getID()})
     fetchTodos()
+    getOrCreateUser()
+    
   }, [])
-
   function setInput(key, value) {
     setFormState({ ...formState, [key]: value })
   }
+
+  async function getOrCreateUser() {
+    const path = 'getOrCreateUser'
+    const endpoint = baseURL + '/' + path
+    var data = JSON.stringify({"cognitoID": getID()});
+    console.log('Getting/Creating User')
+
+    var config = {
+      method: 'post',
+      url: endpoint,
+      headers: { 
+        'Content-Type': 'application/json'
+      },
+      data : data
+    };
+    try {
+      const rsp = await axios(config)
+      console.log("User info retrieved")
+      console.log(rsp.data.cognitoID)
+      setWidgetURL(rsp.data.cognitoID)
+      console.log("Printing widget url state")
+      console.log(widgetURL)
+    } catch (err) {console.log(err)}
+
+  }
+
 
   async function fetchTodos() {
     try {
@@ -41,7 +70,7 @@ const App = () => {
       setTodos([...todos, todo])
       setFormState(initialState)
       console.log("Getting User ID")
-      var userID = getUserID()
+      var userID = getID()
       console.log("User id" + userID)
       await API.graphql(graphqlOperation(createTodo, {input: todo}))
     } catch (err) {
@@ -63,15 +92,21 @@ const App = () => {
     return userData
   }
 
-  function getUserID() {
+  function getID() {
     var userData = getUserData()
     var userID = userData['UserAttributes'][0]['Value']
     return userID
   } 
 
+  function getEmail() {
+    var userData = getUserData()
+    return userData['UserAttributes'][4]['Value']
+  }
+
   return (
     <div style={styles.container}>
-      <h2>Amplify Todos: User #{getUserID()}</h2>
+      <iframe src = {widgetURL}></iframe>
+      <h2>Amplify Todos: User #{widgetURL}</h2>
       <input
         onChange={event => setInput('name', event.target.value)}
         style={styles.input}
