@@ -155,7 +155,7 @@ export default function TopAppBar() {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
-                <Toolbar>
+                <Toolbar variant="dense" style={styles.topBar}>
                     <Typography
                         variant="h6"
                         noWrap
@@ -210,4 +210,8 @@ export default function TopAppBar() {
             {renderMenu}
         </Box>
     );
+}
+
+const styles = {
+    topBar: {backgroundColor: "#0c1926"}
 }
