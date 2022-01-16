@@ -6,6 +6,8 @@ import { createTodo } from './graphql/mutations'
 import { listTodos } from './graphql/queries'
 import awsExports from "./aws-exports";
 import { withAuthenticator } from '@aws-amplify/ui-react'
+import AuthClass from '@aws-amplify/ui-react'
+import { ConsoleLogger } from '@aws-amplify/core';
 Amplify.configure(awsExports);
 
 const initialState = { name: '', description: '', cognitoID: ''}
