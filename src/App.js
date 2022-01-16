@@ -43,11 +43,7 @@ const App = () => {
     };
     try {
       const rsp = await axios(config)
-      console.log("User info retrieved")
-      console.log(rsp.data.cognitoID)
       setWidgetURL(rsp.data.cognitoID)
-      console.log("Printing widget url state")
-      console.log(widgetURL)
     } catch (err) {console.log(err)}
 
   }
