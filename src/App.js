@@ -11,7 +11,7 @@ import { ConsoleLogger } from '@aws-amplify/core';
 Amplify.configure(awsExports);
 
 const initialState = { name: '', description: '', cognitoID: ''}
-const baseURL = "https://49fb-108-54-179-218.ngrok.io";
+const baseURL = 'http://backendapp-env.eba-irwuyxph.us-east-1.elasticbeanstalk.com';
 const App = () => { 
   const [formState, setFormState] = useState(initialState)
   const [todos, setTodos] = useState([])
@@ -28,13 +28,15 @@ const App = () => {
   }
 
   async function getOrCreateUser() {
-    const path = 'getOrCreateUser'
-    const endpoint = baseURL + '/' + path
-    var data = JSON.stringify({"cognitoID": getID()});
+    const path = 'widgets/master'
+    const params = '?' + 'cognitoID=' + getID()
+    const endpoint = baseURL + '/' + path + params
+    console.log(endpoint)
+    var data = ""
     console.log('Getting/Creating User')
 
     var config = {
-      method: 'post',
+      method: 'get',
       url: endpoint,
       headers: { 
         'Content-Type': 'application/json'
@@ -43,7 +45,7 @@ const App = () => {
     };
     try {
       const rsp = await axios(config)
-      setWidgetURL(rsp.data.cognitoID)
+      setWidgetURL(rsp.data.url)
     } catch (err) {console.log(err)}
 
   }
@@ -102,28 +104,6 @@ const App = () => {
   return (
     <div style={styles.container}>
       <iframe src = {widgetURL}></iframe>
-      <h2>Amplify Todos: User #{widgetURL}</h2>
-      <input
-        onChange={event => setInput('name', event.target.value)}
-        style={styles.input}
-        value={formState.name}
-        placeholder="Name"
-      />
-      <input
-        onChange={event => setInput('description', event.target.value)}
-        style={styles.input}
-        value={formState.description}
-        placeholder="Description"
-      />
-      <button style={styles.button} onClick={addTodo}>Create Todo</button>
-      {
-        todos.map((todo, index) => (
-          <div key={todo.id ? todo.id : index} style={styles.todo}>
-            <p style={styles.todoName}>{todo.name}</p>
-            <p style={styles.todoDescription}>{todo.description}</p>
-          </div>
-        ))
-      } 
     </div>
   )
 }
