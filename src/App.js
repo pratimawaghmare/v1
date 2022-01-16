@@ -103,13 +103,13 @@ const App = () => {
 
   return (
     <div style={styles.container}>
-      <iframe src = {widgetURL}></iframe>
+      <iframe src = {widgetURL} style={styles.container}></iframe>
     </div>
   )
 }
 
 const styles = {
-  container: { width: 400, margin: '0 auto', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 20 },
+  container: { height: '100vh', width: '100vw', margin: -2},
   todo: {  marginBottom: 15 },
   input: { border: 'none', backgroundColor: '#ddd', marginBottom: 10, padding: 8, fontSize: 18 },
   todoName: { fontSize: 20, fontWeight: 'bold' },
