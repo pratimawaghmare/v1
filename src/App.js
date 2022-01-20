@@ -11,7 +11,7 @@ import { ConsoleLogger } from '@aws-amplify/core';
 Amplify.configure(awsExports);
 
 const initialState = { name: '', description: '', cognitoID: ''}
-const baseURL = 'http://backendapp-env.eba-irwuyxph.us-east-1.elasticbeanstalk.com';
+const baseURL = 'http://backend-prod.eba-irwuyxph.us-east-1.elasticbeanstalk.com';
 const App = () => { 
   const [formState, setFormState] = useState(initialState)
   const [todos, setTodos] = useState([])
@@ -102,14 +102,15 @@ const App = () => {
   }
 
   return (
-    <div style={styles.container}>
-      <iframe src = {widgetURL}></iframe>
+    <div style={styles.rootStyle}>
+      <iframe style={styles.container} src = {widgetURL}></iframe>
     </div>
   )
 }
 
 const styles = {
-  container: { width: 400, margin: '0 auto', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 20 },
+  rootStyle: {height: '100vh', margin: '0px'},
+  container: { height: '100%', width: '100%', margin: '0 auto', display: 'flex', flexDirection: 'column', justifyContent: 'center' },
   todo: {  marginBottom: 15 },
   input: { border: 'none', backgroundColor: '#ddd', marginBottom: 10, padding: 8, fontSize: 18 },
   todoName: { fontSize: 20, fontWeight: 'bold' },
