@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
+import { ListItemButton } from '@mui/material';
 import ListItemText from '@mui/material/ListItemText';
 import App from "./App";
 
@@ -30,9 +30,9 @@ export default function NavigationDrawer() {
             >
                 <List>
                     {['Money', 'Student Loans', 'Payroll', 'Tax'].map((text, index) => (
-                        <ListItem button key={text}>
+                        <ListItemButton key={text}>
                             <ListItemText primary={text} />
-                        </ListItem>
+                        </ListItemButton>
                     ))}
                 </List>
             </Drawer>
