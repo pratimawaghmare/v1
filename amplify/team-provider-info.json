@@ -1,49 +1,19 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-mvpv1-dev-215704-authRole",
-      "UnauthRoleArn": "arn:aws:iam::039955304196:role/amplify-mvpv1-dev-215704-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::039955304196:role/amplify-mvpv1-dev-215704-authRole",
+      "AuthRoleName": "amplify-mvpv2-dev-153700-authRole",
+      "UnauthRoleArn": "arn:aws:iam::039955304196:role/amplify-mvpv2-dev-153700-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::039955304196:role/amplify-mvpv2-dev-153700-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-mvpv1-dev-215704-deployment",
-      "UnauthRoleName": "amplify-mvpv1-dev-215704-unauthRole",
-      "StackName": "amplify-mvpv1-dev-215704",
-      "StackId": "arn:aws:cloudformation:us-east-1:039955304196:stack/amplify-mvpv1-dev-215704/d8c4cf40-6789-11ec-a7a9-127d700f0b93",
-      "AmplifyAppId": "d3dcv1f5y2ane4"
+      "DeploymentBucketName": "amplify-mvpv2-dev-153700-deployment",
+      "UnauthRoleName": "amplify-mvpv2-dev-153700-unauthRole",
+      "StackName": "amplify-mvpv2-dev-153700",
+      "StackId": "arn:aws:cloudformation:us-east-1:039955304196:stack/amplify-mvpv2-dev-153700/60615920-86c3-11ec-9085-0aa0a9eb21ff",
+      "AmplifyAppId": "d4ez5o901ftv3"
     },
     "categories": {
       "auth": {
-        "mvpv1cafb32b0": {}
-      },
-      "hosting": {
-        "amplifyhosting": {
-          "appId": "d3dcv1f5y2ane4",
-          "type": "manual"
-        }
-      }
-    }
-  },
-  "prod": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-mvpv1-prod-150742-authRole",
-      "UnauthRoleArn": "arn:aws:iam::039955304196:role/amplify-mvpv1-prod-150742-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::039955304196:role/amplify-mvpv1-prod-150742-authRole",
-      "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-mvpv1-prod-150742-deployment",
-      "UnauthRoleName": "amplify-mvpv1-prod-150742-unauthRole",
-      "StackName": "amplify-mvpv1-prod-150742",
-      "StackId": "arn:aws:cloudformation:us-east-1:039955304196:stack/amplify-mvpv1-prod-150742/f7514e60-7707-11ec-80f9-0a2770410e75",
-      "AmplifyAppId": "d3dcv1f5y2ane4"
-    },
-    "categories": {
-      "hosting": {
-        "amplifyhosting": {
-          "appId": "d3dcv1f5y2ane4",
-          "type": "manual"
-        }
-      },
-      "auth": {
-        "mvpv1cafb32b0": {}
+        "mvpv28d5a7e14": {}
       }
     }
   }

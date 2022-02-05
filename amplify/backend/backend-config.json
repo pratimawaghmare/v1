@@ -1,6 +1,6 @@
 {
   "api": {
-    "mvpv1": {
+    "mvpv2": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
@@ -8,9 +8,7 @@
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 365,
-              "apiKeyExpirationDate": "2022-12-28T03:14:50.765Z",
-              "description": "mvpv1 api key"
+              "apiKeyExpirationDays": 7
             }
           },
           "additionalAuthenticationProviders": []
@@ -19,14 +17,16 @@
     }
   },
   "auth": {
-    "mvpv1cafb32b0": {
+    "mvpv28d5a7e14": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "customAuth": false,
       "frontendAuthConfig": {
         "socialProviders": [],
-        "usernameAttributes": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
         "signupAttributes": [
           "EMAIL"
         ],
@@ -42,13 +42,6 @@
           "EMAIL"
         ]
       }
-    }
-  },
-  "hosting": {
-    "amplifyhosting": {
-      "service": "amplifyhosting",
-      "providerPlugin": "awscloudformation",
-      "type": "manual"
     }
   }
 }
