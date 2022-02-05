@@ -22,4 +22,30 @@ export default function NavigationDrawer() {
         </Box>
     );
 }
+/*
+
+            <Drawer
+                sx={{
+                    width: drawerWidth,
+                    flexShrink: 0,
+                    '& .MuiDrawer-paper': {
+                        width: drawerWidth,
+                        boxSizing: 'border-box',
+                    },
+                    '& .css-12i7wg6-MuiPaper-root-MuiDrawer-paper': {
+                        position: 'inherit',
+                    }
+                }}
+                variant="permanent"
+                anchor="left"
+            >
+                <List>
+                    {['Money', 'Student Loans', 'Payroll', 'Tax'].map((text, index) => (
+                        <ListItemButton key={text}>
+                            <ListItemText primary={text} />
+                        </ListItemButton>
+                    ))}
+                </List>
+            </Drawer>
+            */
 
