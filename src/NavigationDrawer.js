@@ -13,30 +13,6 @@ export default function NavigationDrawer() {
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-            <Drawer
-                sx={{
-                    width: drawerWidth,
-                    flexShrink: 0,
-                    '& .MuiDrawer-paper': {
-                        width: drawerWidth,
-                        boxSizing: 'border-box',
-                    },
-                    '& .css-12i7wg6-MuiPaper-root-MuiDrawer-paper': {
-                        position: 'inherit',
-                    }
-                }}
-                variant="permanent"
-                anchor="left"
-            >
-                <List>
-                    {['Money', 'Student Loans', 'Payroll', 'Tax'].map((text, index) => (
-                        <ListItemButton key={text}>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    ))}
-                </List>
-            </Drawer>
-
             <Box
                 component="main"
                 sx={{ flexGrow: 1, bgcolor: 'background.default', margin: 0}}
@@ -46,3 +22,4 @@ export default function NavigationDrawer() {
         </Box>
     );
 }
+

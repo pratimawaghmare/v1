@@ -1,6 +1,6 @@
 {
   "api": {
-    "mvpv1": {
+    "mvpv2": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
@@ -17,7 +17,7 @@
     }
   },
   "auth": {
-    "mvpv1099a4ff4": {
+    "mvpv28d5a7e14": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
