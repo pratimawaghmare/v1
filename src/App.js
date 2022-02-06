@@ -11,7 +11,7 @@ import { ConsoleLogger } from '@aws-amplify/core';
 Amplify.configure(awsExports);
 
 const initialState = { name: '', description: '', cognitoID: ''}
-const baseURL = 'http://backend-prod.eba-irwuyxph.us-east-1.elasticbeanstalk.com';
+const baseURL = process.env.REACT_APP_BACKEND_BASE_URL;
 const App = () => { 
   const [formState, setFormState] = useState(initialState)
   const [todos, setTodos] = useState([])
