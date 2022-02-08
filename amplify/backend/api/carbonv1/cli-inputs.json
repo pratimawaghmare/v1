@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "carbonv1",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/kwong/Carbon/v1/amplify/backend/api/carbonv1/schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2023-02-08T22:06:14.808Z",
+      "keyDescription": "api key"
+    }
+  }
+}

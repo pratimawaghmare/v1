@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from 'react'
 import Amplify, { API, graphqlOperation } from 'aws-amplify'
 import axios from 'axios'
-import { createTodo } from './graphql/mutations'
-import { listTodos } from './graphql/queries'
+import { createUser } from './graphql/mutations'
+import { listUsers } from './graphql/queries'
 import awsExports from "./aws-exports";
 import { withAuthenticator } from '@aws-amplify/ui-react'
 import AuthClass from '@aws-amplify/ui-react'
@@ -53,10 +53,10 @@ const App = () => {
 
   async function fetchTodos() {
     try {
-      const todoData = await API.graphql(graphqlOperation(listTodos))
+      const todoData = await API.graphql(graphqlOperation(listUsers))
       console.log("Getting todos")
       console.log(todoData)
-      const todos = todoData.data.listTodos.items
+      const todos = todoData.data.listUsers.items
       setTodos(todos)
     } catch (err) { console.log('error fetching todos') }
   }
@@ -70,7 +70,7 @@ const App = () => {
       console.log("Getting User ID")
       var userID = getID()
       console.log("User id" + userID)
-      await API.graphql(graphqlOperation(createTodo, {input: todo}))
+      await API.graphql(graphqlOperation(createUser, {input: todo}))
     } catch (err) {
       console.log('error creating todo:', err)
     }

@@ -7,6 +7,8 @@
 
 [Getting familar with aws cognito](https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html)
 
+[Workflow](https://docs.amplify.aws/cli/teams/overview/)
+
 # TODO
 2. Learn about aws cognito, appsync or other api
 3. Get ready for MX onboarding
