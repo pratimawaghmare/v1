@@ -1,5 +1,6 @@
 {
   "AppSyncApiName": "carbonv1",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": false
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2022-02-08T22:50:00.615Z"
 }
