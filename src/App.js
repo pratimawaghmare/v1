@@ -34,7 +34,6 @@ const App = () => {
     console.log(endpoint)
     var data = ""
     console.log('Getting/Creating User')
-
     var config = {
       method: 'get',
       url: endpoint,
@@ -47,10 +46,7 @@ const App = () => {
       const rsp = await axios(config)
       setWidgetURL(rsp.data.url)
     } catch (err) {console.log(err)}
-
   }
-
-
   async function fetchTodos() {
     try {
       const todoData = await API.graphql(graphqlOperation(listUsers))
