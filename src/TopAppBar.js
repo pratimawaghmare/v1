@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
+import MuiAppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
@@ -13,7 +13,8 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-
+import MenuIcon from '@mui/icons-material/Menu';
+const drawerWidth = 240;
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -52,6 +53,23 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
             width: '20ch',
         },
     },
+}));
+
+const AppBar = styled(MuiAppBar, {
+    shouldForwardProp: (prop) => prop !== 'open',
+})(({ theme, open }) => ({
+    transition: theme.transitions.create(['margin', 'width'], {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+    }),
+    ...(open && {
+        width: `calc(100% - ${drawerWidth}px)`,
+        marginLeft: `${drawerWidth}px`,
+        transition: theme.transitions.create(['margin', 'width'], {
+            easing: theme.transitions.easing.easeOut,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+    }),
 }));
 
 export default function TopAppBar() {
@@ -154,8 +172,18 @@ export default function TopAppBar() {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+            <AppBar position="fixed" open={true}>
                 <Toolbar variant="dense" style={styles.topBar}>
+                    <IconButton
+                        size="large"
+                        color="inherit"
+                        aria-label="open drawer"
+                        //onClick={handleDrawerOpen}
+                        edge="start"
+                    //sx={{ mr: 2, ...(true && { display: 'none' }) }}
+                    >
+                        <MenuIcon />
+                    </IconButton>
                     <Typography
                         variant="h6"
                         noWrap
@@ -185,5 +213,5 @@ export default function TopAppBar() {
 }
 
 const styles = {
-    topBar: {backgroundColor: "#0c1926"}
+    topBar: { backgroundColor: "#0c1926" }
 }

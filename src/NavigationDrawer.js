@@ -5,6 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import List from '@mui/material/List';
 import { ListItemButton } from '@mui/material';
 import ListItemText from '@mui/material/ListItemText';
+import Toolbar from '@mui/material/Toolbar';
 import App from "./App";
 
 const drawerWidth = 240;
@@ -15,9 +16,10 @@ export default function NavigationDrawer() {
             <CssBaseline />
             <Box
                 component="main"
-                sx={{ flexGrow: 1, bgcolor: 'background.default', margin: 0}}
+                sx={{ flexGrow: 1, bgcolor: 'background.default', marginLeft: `${drawerWidth}px` }}
             >
-                <App/>
+                <Toolbar />
+                <App />
             </Box>
         </Box>
     );
