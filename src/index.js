@@ -6,13 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import Amplify from 'aws-amplify';
 import awsExports from './aws-exports';
 import NavigationDrawer from './NavigationDrawer';
-import DrawerMenu from './components/DrawerMenu';
 Amplify.configure(awsExports);
 
 ReactDOM.render(
   <React.StrictMode>
     <TopAppBar />
-    <DrawerMenu />
     <NavigationDrawer />
   </React.StrictMode>,
   document.getElementById('root')

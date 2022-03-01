@@ -13,6 +13,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import ArrowForward from '@mui/icons-material/ArrowForward';
+import { Link } from "react-router-dom";
 const drawerWidth = 240;
 const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -46,6 +48,10 @@ export default function DrawerMenu() {
                         width: drawerWidth,
                         boxSizing: 'border-box',
                     },
+                    "& .css-12i7wg6-MuiPaper-root-MuiDrawer-paper": {
+                        backgroundColor: "#1976D2"
+                    }
+
                 }}
                 variant="persistent"
                 anchor="left"
@@ -53,21 +59,22 @@ export default function DrawerMenu() {
             >
                 <DrawerHeader>
                     <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                        {theme.direction === 'ltr' ? <ChevronLeftIcon style={{ color: "white" }} /> : <ChevronRightIcon style={{ color: "white" }} />}
                     </IconButton>
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {['MX Widet', 'Nexus Widget'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                    {['MX Widget', 'Nexus Widget'].map((text, index) => (
+                        <ListItem button key={text} component={Link} to={"/" + text.replace(' ', '')}>
+
+                            <ListItemText primary={text} style={{ color: "white" }} />
+                            <ListItemIcon style={{ color: "white" }}>
+                                <ArrowForward />
                             </ListItemIcon>
-                            <ListItemText primary={text} />
                         </ListItem>
                     ))}
                 </List>
-                <Divider />
+                {/* <Divider /> */}
             </Drawer>
         </Box>
     );

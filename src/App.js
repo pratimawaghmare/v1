@@ -8,20 +8,22 @@ import awsExports from "./aws-exports";
 import { withAuthenticator } from '@aws-amplify/ui-react'
 import AuthClass from '@aws-amplify/ui-react'
 import { ConsoleLogger } from '@aws-amplify/core';
+import DrawerMenu from './components/DrawerMenu';
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 Amplify.configure(awsExports);
 
-const initialState = { name: '', description: '', cognitoID: ''}
+const initialState = { name: '', description: '', cognitoID: '' }
 const baseURL = process.env.REACT_APP_BACKEND_BASE_URL;
-const App = () => { 
+const App = () => {
   const [formState, setFormState] = useState(initialState)
   const [todos, setTodos] = useState([])
   const [widgetURL, setWidgetURL] = useState("")
 
   useEffect(() => {
-    setFormState({cognitoID: getID()})
+    setFormState({ cognitoID: getID() })
     fetchTodos()
     getOrCreateUser()
-    
+
   }, [])
   function setInput(key, value) {
     setFormState({ ...formState, [key]: value })
@@ -37,15 +39,15 @@ const App = () => {
     var config = {
       method: 'get',
       url: endpoint,
-      headers: { 
+      headers: {
         'Content-Type': 'application/json'
       },
-      data : data
+      data: data
     };
     try {
       const rsp = await axios(config)
       setWidgetURL(rsp.data.url)
-    } catch (err) {console.log(err)}
+    } catch (err) { console.log(err) }
   }
   async function fetchTodos() {
     try {
@@ -66,18 +68,18 @@ const App = () => {
       console.log("Getting User ID")
       var userID = getID()
       console.log("User id" + userID)
-      await API.graphql(graphqlOperation(createUser, {input: todo}))
+      await API.graphql(graphqlOperation(createUser, { input: todo }))
     } catch (err) {
       console.log('error creating todo:', err)
     }
   }
 
-  function getUserData(){
+  function getUserData() {
     var userData = null
-    for(var key in localStorage) {
+    for (var key in localStorage) {
       if (key.includes("userData")) {
-          userData = JSON.parse(localStorage.getItem(key))
-          break
+        userData = JSON.parse(localStorage.getItem(key))
+        break
       }
     }
     if (userData == null) {
@@ -90,7 +92,7 @@ const App = () => {
     var userData = getUserData()
     var userID = userData['UserAttributes'][0]['Value']
     return userID
-  } 
+  }
 
   function getEmail() {
     var userData = getUserData()
@@ -99,15 +101,20 @@ const App = () => {
 
   return (
     <div style={styles.rootStyle}>
-      <iframe style={styles.container} src = {widgetURL}></iframe>
+      <BrowserRouter>
+        {/* <iframe style={styles.container} src = {widgetURL}> </iframe>*/}
+        <Routes>
+          <Route exact path="/" element={<DrawerMenu />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }
 
 const styles = {
-  rootStyle: {height: '100vh', margin: '0px'},
+  rootStyle: { height: '100vh', margin: '0px' },
   container: { height: '100%', width: '100%', margin: '0 auto', display: 'flex', flexDirection: 'column', justifyContent: 'center' },
-  todo: {  marginBottom: 15 },
+  todo: { marginBottom: 15 },
   input: { border: 'none', backgroundColor: '#ddd', marginBottom: 10, padding: 8, fontSize: 18 },
   todoName: { fontSize: 20, fontWeight: 'bold' },
   todoDescription: { marginBottom: 0 },
